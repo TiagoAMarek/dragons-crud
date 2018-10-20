@@ -8,7 +8,10 @@
       ],
       "@env/*": [
         "environments/*"
-      ]
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
