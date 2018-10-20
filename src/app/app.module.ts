@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+
+import { DragonsService } from '@app/api/dragons.service'
 
 import ListPage from '@app/pages/list/list.component'
 import LoginPage from '@app/pages/login/login.component'
@@ -18,10 +21,13 @@ import Header from '@app/components/header/header.component'
     RegisterPage,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    DragonsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

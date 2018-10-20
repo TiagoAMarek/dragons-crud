@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://dragons-api.herokuapp.com/'
-};
+  apiUrl: 'https://dragons-api.herokuapp.com/api/'
+}
 
 /*
  * For easier debugging in development mode, you can import the following file
