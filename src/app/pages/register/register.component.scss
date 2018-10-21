@@ -1,0 +1,14 @@
+@import '~bulma/sass/utilities/_all';
+
+.app-register {
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $size-medium;
+  }
+
+  &__form {
+    padding: 0 $size-large 0 $size-large;
+  }
+}

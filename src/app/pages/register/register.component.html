@@ -1,1 +1,35 @@
-<h1>Register</h1>
+<div class="app-register container">
+  <header class="app-register__header">
+    <h1 class="title">Registrar dragões</h1>
+  </header>
+
+  <div class="columns" (submit)="registerDragon()">
+    <form [formGroup]="registerForm" class="column is-half is-offset-one-quarter">
+      <div class="field">
+        <label>
+          Nome:
+          <input
+            formControlName="name"
+            [ngClass]="f.name.errors ? 'is-danger' : 'is-success'"
+            class="input"
+            type="text"
+            placeholder="Zorah Magdaros"
+          >
+        </label>
+      </div>
+      <div class="field">
+        <label>
+          Tipo:
+          <input
+            formControlName="type"
+            [ngClass]="f.type.errors ? 'is-danger' : 'is-success'"
+            class="input"
+            type="text"
+            placeholder="Elder Dragon"
+          >
+        </label>
+      </div>
+      <button type="submit" [disabled]="!registerForm.valid" class="button is-fullwidth is-info">Criar</button>
+    </form>
+  </div>
+</div>

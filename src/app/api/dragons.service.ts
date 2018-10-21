@@ -29,4 +29,8 @@ export class DragonsService {
         map(dragons => this.sortDragons(dragons))
       )
   }
+
+  registerDragon(data): Observable<any> {
+    return this._http.post(`${apiUrl}dragons/`, data)
+  }
 }
