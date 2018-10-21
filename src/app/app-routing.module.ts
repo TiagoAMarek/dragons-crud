@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', component: LoginPage },
   { path: 'list', component: ListPage },
   { path: 'register', component: RegisterPage },
+  { path: 'update/:slug', component: RegisterPage },
 ]
 
 @NgModule({

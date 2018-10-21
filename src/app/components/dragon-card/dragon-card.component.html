@@ -14,7 +14,7 @@
     </div>
   </div>
   <footer class="card-footer">
-    <a href="#" class="card-footer-item">Editar</a>
+    <a [routerLink]="['/update', dragon.slug]" class="card-footer-item">Editar</a>
     <a (click)="deleteDragon(dragon.slug)" class="card-footer-item">Deletar</a>
   </footer>
 </div>

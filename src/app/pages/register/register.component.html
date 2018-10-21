@@ -3,7 +3,7 @@
     <h1 class="title">Registrar dragões</h1>
   </header>
 
-  <div class="columns" (submit)="registerDragon()">
+  <div class="columns">
     <form [formGroup]="registerForm" class="column is-half is-offset-one-quarter">
       <div class="field">
         <label>
@@ -29,11 +29,19 @@
           >
         </label>
       </div>
+
       <button
-        type="submit"
+        *ngIf="!slug"
+        (click)="registerDragon()"
         [disabled]="!registerForm.valid"
         [class.is-loading]="isLoading"
         class="button is-fullwidth is-info">Criar</button>
+      <button
+        *ngIf="slug"
+        (click)="updateDragon()"
+        [disabled]="!registerForm.valid"
+        [class.is-loading]="isLoading"
+        class="button is-fullwidth is-info">Atualizar</button>
     </form>
   </div>
 </div>

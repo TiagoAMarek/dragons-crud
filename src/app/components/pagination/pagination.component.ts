@@ -1,4 +1,3 @@
-// Based on --> http://jasonwatmore.com/post/2016/08/23/angular-2-pagination-example-with-logic-like-google
 import { Component, Input, EventEmitter, Output } from '@angular/core'
 import { PaginationService } from './pagination.service'
 
@@ -12,6 +11,7 @@ export class Pagination {
 
   @Input() set interactionData(data) {
     this.paginationData = data
+    // API starts on page 0, it fix to visually starts on page 1
     this.paginationData.page += 1
     this.setPage(this.paginationData.page)
   }

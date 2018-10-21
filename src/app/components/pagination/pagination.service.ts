@@ -1,3 +1,4 @@
+// Got it from --> http://jasonwatmore.com/post/2016/08/23/angular-2-pagination-example-with-logic-like-google
 import { Injectable } from '@angular/core';
 
 @Injectable()
