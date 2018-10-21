@@ -31,8 +31,11 @@ export default class ListPage implements OnInit {
       })
   }
 
-  updateList(page) {
+  updateList(data) {
+    const { page, deleted } = data
     if (page !== undefined) this.currentPage = page
+    if (deleted && (this.dragons.items.length - 1 === 0)) this.currentPage -= 1
+
     this.getDragons(this.currentPage)
   }
 }

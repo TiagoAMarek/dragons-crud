@@ -23,8 +23,10 @@
 
     <app-dragon-card
       *ngFor="let dragon of dragons.items"
-      (page)="updateList($event)"
+      (deleted)="updateList({ deleted: $event })"
       [dragon]="dragon"></app-dragon-card>
-    <app-pagination (page)="updateList($event)" [paginationData]="dragons._metadata"></app-pagination>
+    <app-pagination
+      (page)="updateList({ page: $event })"
+      [interactionData]="dragons._metadata"></app-pagination>
   </div>
 </div>

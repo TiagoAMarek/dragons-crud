@@ -9,12 +9,12 @@ import { DragonsService } from '@app/api/dragons.service'
 })
 export class DragonCard {
   @Input() dragon: Dragon
-  @Output() page = new EventEmitter()
+  @Output() deleted = new EventEmitter()
 
   constructor(private dragonsService: DragonsService) { }
 
   deleteDragon(slug) {
     this.dragonsService.deleteDragon(slug)
-      .subscribe(() => this.page.emit(undefined))
+      .subscribe(() => this.deleted.emit(true))
   }
 }
