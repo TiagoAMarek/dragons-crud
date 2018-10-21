@@ -1,7 +1,11 @@
 @import '~bulma/sass/utilities/_all';
-@import '~bulma/sass/components/card';
 
 .app-list {
+
+  &__loading-container {
+    display: flex;
+    justify-content: center;
+  }
 
   &__not-found-title {
     text-align: center;
@@ -10,9 +14,5 @@
   &__header {
     display: flex;
     justify-content: space-between;
-  }
-
-  &__card {
-    margin-bottom: $size-medium;
   }
 }

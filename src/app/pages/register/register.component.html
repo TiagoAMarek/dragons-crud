@@ -29,7 +29,11 @@
           >
         </label>
       </div>
-      <button type="submit" [disabled]="!registerForm.valid" class="button is-fullwidth is-info">Criar</button>
+      <button
+        type="submit"
+        [disabled]="!registerForm.valid"
+        [class.is-loading]="isLoading"
+        class="button is-fullwidth is-info">Criar</button>
     </form>
   </div>
 </div>

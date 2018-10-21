@@ -12,6 +12,7 @@ export default class ListPage implements OnInit {
     items: [],
     _metadata: {},
   }
+  private isLoading = false
 
   constructor(private dragonsApi: DragonsService) { }
 
@@ -20,8 +21,13 @@ export default class ListPage implements OnInit {
   }
 
   getDragons(page) {
+    this.isLoading = true
+
     this.dragonsApi.getDragons(page)
-      .subscribe(dragons => this.dragons = dragons)
+      .subscribe(dragons => {
+        this.dragons = dragons
+        this.isLoading = false
+      })
   }
 
   updateList(page) {

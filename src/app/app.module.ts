@@ -13,7 +13,8 @@ import ListPage from '@app/pages/list/list.component'
 import LoginPage from '@app/pages/login/login.component'
 import RegisterPage from '@app/pages/register/register.component'
 import Header from '@app/components/header/header.component'
-import { Pagination } from '@app/components/pagination/pagination.component'
+import { Pagination } from '@app/components/pagination/pagination.component';
+import { DragonCard } from '@app/components/dragon-card/dragon-card.component'
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { Pagination } from '@app/components/pagination/pagination.component'
     Header,
     RegisterPage,
     Pagination,
+    DragonCard,
   ],
   imports: [
     AppRoutingModule,

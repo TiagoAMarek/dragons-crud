@@ -1,9 +1,17 @@
 <div class="app-list container">
 
-  <div class="columns" *ngIf="!dragons.items.length">
+  <div class="columns" *ngIf="isLoading">
+    <div class="column is-half is-offset-one-quarter app-list__loading-container">
+      <img class="app-list__loading" src="assets/loading.gif" alt="Dragon flying">
+    </div>
+  </div>
+
+  <div class="columns" *ngIf="!dragons.items.length && !isLoading">
     <div class="column is-half is-offset-one-quarter">
       <p class="title app-list__not-found-title">Nenhum dragão encontrado. :(</p>
-      <button [routerLink]="['/register']" class="button is-fullwidth is-info">Crie seu primeiro dragão</button>
+      <button [routerLink]="['/register']" class="button is-fullwidth is-info">
+        Crie seu primeiro dragão
+      </button>
     </div>
   </div>
 
@@ -12,24 +20,8 @@
       <p class="title">Meus dragões</p>
       <button [routerLink]="['/register']" class="button is-info">Registrar novo dragão</button>
     </header>
-    <div class="app-list__card card" *ngFor="let dragon of dragons.items">
-      <header class="card-header">
-        <p class="card-header-title">
-          {{ dragon.name || 'Sem nome' }}
-        </p>
-      </header>
-      <div class="card-content">
-        <div class="content">
-          <p><strong>Tipo:</strong> {{ dragon.type || 'Sem tipo' }}</p>
-          <p><strong>Data de criação: </strong><time datetime="2016-1-1">{{ dragon.created_at | date:'dd/MM/yyyy @ h:mma' }}</time></p>
-        </div>
-      </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Editar</a>
-        <a href="#" class="card-footer-item">Deletar</a>
-      </footer>
-    </div>
 
+    <app-dragon-card *ngFor="let dragon of dragons.items" [dragon]="dragon"></app-dragon-card>
     <app-pagination (page)="updateList($event)" [paginationData]="dragons._metadata"></app-pagination>
   </div>
 </div>

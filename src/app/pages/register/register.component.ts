@@ -13,6 +13,7 @@ export default class RegisterPage {
     name: new FormControl('', Validators.required),
     type: new FormControl('', Validators.required)
   })
+  private isLoading: Boolean = false
 
   constructor(
     private dragonApi: DragonsService,
@@ -23,6 +24,7 @@ export default class RegisterPage {
 
   registerDragon() {
     if(!this.registerForm.valid) return
+    this.isLoading = true
 
     this.dragonApi.registerDragon(this.registerForm.value)
       .subscribe(() => this.router.navigate(['/list']))

@@ -1,0 +1,18 @@
+<div class="app-dragon-card card">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{ dragon.name || 'Sem nome' }}
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <p><strong>Tipo:</strong> {{ dragon.type || 'Sem tipo' }}</p>
+      <p><strong>Data de criação: </strong><time datetime="2016-1-1">{{ dragon.created_at | date:'dd/MM/yyyy @ h:mma'
+          }}</time></p>
+    </div>
+  </div>
+  <footer class="card-footer">
+    <a href="#" class="card-footer-item">Editar</a>
+    <a (click)="deleteDragon(dragon.slug)" class="card-footer-item">Deletar</a>
+  </footer>
+</div>

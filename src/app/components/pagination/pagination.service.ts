@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class PaginationService {
-  getPager(totalPages: number, currentPage: number = 0, pageSize: number = 10) {
+  getPager(totalPages: number, currentPage: number = 1, pageSize: number = 10) {
 
     // ensure current page isn't out of range
-    if (currentPage < 0) {
-      currentPage = 0;
+    if (currentPage < 1) {
+      currentPage = 1;
     } else if (currentPage > totalPages) {
       currentPage = totalPages;
     }
@@ -19,7 +19,7 @@ export class PaginationService {
     } else {
       // more than 10 total pages so calculate start and end pages
       if (currentPage <= 6) {
-        startPage = 0;
+        startPage = 1;
         endPage = 10;
       } else if (currentPage + 4 >= totalPages) {
         startPage = totalPages - 9;
@@ -31,7 +31,7 @@ export class PaginationService {
     }
 
     // calculate start and end item indexes
-    let startIndex = 0;
+    let startIndex = 1;
     let endIndex = totalPages;
 
     // create an array of pages to ng-repeat in the pager control

@@ -19,7 +19,7 @@ export class Pagination implements OnInit {
   constructor(private paginationService: PaginationService) { }
 
   ngOnInit() {
-    this.setPage(0)
+    this.setPage(1)
   }
 
   setPage(page: number) {
@@ -27,7 +27,7 @@ export class Pagination implements OnInit {
   }
 
   clickPage(page: number) {
-    this.page.emit(page)
+    this.page.emit(page - 1)
     this.setPage(page)
   }
 
