@@ -1,6 +1,6 @@
+// Based on --> http://jasonwatmore.com/post/2016/08/23/angular-2-pagination-example-with-logic-like-google
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core'
 import { PaginationService } from './pagination.service'
-
 
 @Component({
   selector: 'app-pagination',
@@ -14,7 +14,7 @@ export class Pagination implements OnInit {
   pager: any = {}
 
   // paged items
-  pagedItems: any[];
+  pagedItems: any[]
 
   constructor(private paginationService: PaginationService) { }
 

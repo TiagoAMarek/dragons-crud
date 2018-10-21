@@ -13,7 +13,7 @@ export default class RegisterPage {
     name: new FormControl('', Validators.required),
     type: new FormControl('', Validators.required)
   })
-  private isLoading: Boolean = false
+  private isLoading: boolean = false
 
   constructor(
     private dragonApi: DragonsService,

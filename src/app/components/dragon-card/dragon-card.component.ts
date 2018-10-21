@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 import { Dragon } from '@app/models/Dragon'
 import { DragonsService } from '@app/api/dragons.service'
 
@@ -9,11 +9,12 @@ import { DragonsService } from '@app/api/dragons.service'
 })
 export class DragonCard {
   @Input() dragon: Dragon
+  @Output() page = new EventEmitter()
 
   constructor(private dragonsService: DragonsService) { }
 
   deleteDragon(slug) {
     this.dragonsService.deleteDragon(slug)
-      .subscribe()
+      .subscribe(() => this.page.emit(undefined))
   }
 }

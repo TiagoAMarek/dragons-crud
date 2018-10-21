@@ -21,7 +21,10 @@
       <button [routerLink]="['/register']" class="button is-info">Registrar novo dragão</button>
     </header>
 
-    <app-dragon-card *ngFor="let dragon of dragons.items" [dragon]="dragon"></app-dragon-card>
+    <app-dragon-card
+      *ngFor="let dragon of dragons.items"
+      (page)="updateList($event)"
+      [dragon]="dragon"></app-dragon-card>
     <app-pagination (page)="updateList($event)" [paginationData]="dragons._metadata"></app-pagination>
   </div>
 </div>

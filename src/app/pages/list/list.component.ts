@@ -12,12 +12,13 @@ export default class ListPage implements OnInit {
     items: [],
     _metadata: {},
   }
-  private isLoading = false
+  private isLoading: boolean = false
+  private currentPage: number = 0
 
   constructor(private dragonsApi: DragonsService) { }
 
   ngOnInit() {
-    this.getDragons(0)
+    this.getDragons(this.currentPage)
   }
 
   getDragons(page) {
@@ -31,6 +32,7 @@ export default class ListPage implements OnInit {
   }
 
   updateList(page) {
-    this.getDragons(page)
+    if (page !== undefined) this.currentPage = page
+    this.getDragons(this.currentPage)
   }
 }
