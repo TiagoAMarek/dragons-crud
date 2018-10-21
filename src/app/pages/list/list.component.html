@@ -1,20 +1,35 @@
 <div class="app-list container">
 
-  <div class="app-list__card card" *ngFor="let dragon of dragons">
-    <header class="card-header">
-      <p class="card-header-title">
-        {{ dragon.name || 'Sem nome' }}
-      </p>
-    </header>
-    <div class="card-content">
-      <div class="content">
-        <p><strong>Tipo:</strong> {{ dragon.type || 'Sem tipo' }}</p>
-        <p><strong>Data de criação: </strong><time datetime="2016-1-1">{{ dragon.created_at | date:'dd/MM/yyyy @ h:mma' }}</time></p>
-      </div>
+  <div class="columns" *ngIf="!dragons.items.length">
+    <div class="column is-half is-offset-one-quarter">
+      <p class="title app-list__not-found-title">Nenhum dragão encontrado. :(</p>
+      <button [routerLink]="['/register']" class="button is-fullwidth is-info">Crie seu primeiro dragão</button>
     </div>
-    <footer class="card-footer">
-      <a href="#" class="card-footer-item">Editar</a>
-      <a href="#" class="card-footer-item">Deletar</a>
-    </footer>
+  </div>
+
+  <div *ngIf="dragons.items.length">
+    <header class="app-list__header">
+      <p class="title">Meus dragões</p>
+      <button [routerLink]="['/register']" class="button is-info">Registrar novo dragão</button>
+    </header>
+    <div class="app-list__card card" *ngFor="let dragon of dragons.items">
+      <header class="card-header">
+        <p class="card-header-title">
+          {{ dragon.name || 'Sem nome' }}
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <p><strong>Tipo:</strong> {{ dragon.type || 'Sem tipo' }}</p>
+          <p><strong>Data de criação: </strong><time datetime="2016-1-1">{{ dragon.created_at | date:'dd/MM/yyyy @ h:mma' }}</time></p>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <a href="#" class="card-footer-item">Editar</a>
+        <a href="#" class="card-footer-item">Deletar</a>
+      </footer>
+    </div>
+
+    <app-pagination (page)="updateList($event)" [paginationData]="dragons._metadata"></app-pagination>
   </div>
 </div>

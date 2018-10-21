@@ -1,0 +1,28 @@
+<nav
+  *ngIf="pager.pages && pager.pages.length"
+  class="pagination is-centered"
+  role="navigation"
+  aria-label="pagination">
+  <button
+    class="pagination-previous"
+    [disabled]="pager.currentPage === 1"
+    (click)="setPage(pager.currentPage - 1)">
+    Anterior
+</button>
+
+  <button
+    class="pagination-next"
+    [disabled]="pager.currentPage === pager.totalPages"
+    (click)="setPage(pager.currentPage + 1)">
+    Próxima
+</button>
+
+  <ul class="pagination-list">
+    <li
+      class="pagination-link"
+      *ngFor="let page of pager.pages"
+      [class.is-current]="pager.currentPage === page">
+      <a (click)="clickPage(page)">{{page}}</a>
+    </li>
+  </ul>
+</nav>

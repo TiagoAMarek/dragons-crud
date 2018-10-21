@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { DragonsService } from '@app/api/dragons.service'
-import { Dragon } from '@app/models/Dragon'
 import { Dragons } from '@app/models/Dragons'
 
 @Component({
@@ -9,12 +8,23 @@ import { Dragons } from '@app/models/Dragons'
   styleUrls: ['./list.component.scss']
 })
 export default class ListPage implements OnInit {
-  private dragons: Dragon[] = []
+  private dragons: Dragons = {
+    items: [],
+    _metadata: {},
+  }
 
   constructor(private dragonsApi: DragonsService) { }
 
-  async ngOnInit() {
-    this.dragonsApi.getDragons()
+  ngOnInit() {
+    this.getDragons(0)
+  }
+
+  getDragons(page) {
+    this.dragonsApi.getDragons(page)
       .subscribe(dragons => this.dragons = dragons)
+  }
+
+  updateList(page) {
+    this.getDragons(page)
   }
 }

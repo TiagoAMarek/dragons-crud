@@ -23,10 +23,15 @@ export class DragonsService {
   sortDragons = (dragons) =>
     dragons.items.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
 
-  getDragons(): Observable<Dragon[]> {
-    return this._http.get<Dragons>(`${apiUrl}dragons/`)
+  getDragons(page: number): Observable<Dragons> {
+    return this._http.get<Dragons>(`${apiUrl}dragons/?page=${page}`)
       .pipe(
-        map(dragons => this.sortDragons(dragons))
+        map(dragons => {
+          return {
+            items: this.sortDragons(dragons),
+            _metadata: dragons._metadata,
+          }
+        })
       )
   }
 
