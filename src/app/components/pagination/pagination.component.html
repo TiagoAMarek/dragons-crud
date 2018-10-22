@@ -18,11 +18,13 @@
 </button>
 
   <ul class="pagination-list">
-    <li
-      class="pagination-link"
-      *ngFor="let page of pager.pages"
-      [class.is-current]="pager.currentPage === page">
-      <a (click)="clickPage(page)">{{page}}</a>
+    <li *ngFor="let page of pager.pages">
+      <a
+        [class.is-current]="pager.currentPage === page"
+        class="pagination-link"
+        (click)="clickPage(page)">
+        {{page}}
+      </a>
     </li>
   </ul>
 </nav>
