@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 
 import { environment } from '@env/environment'
 const { apiUrl } = environment
@@ -16,7 +16,7 @@ export class DragonsService {
   constructor(private _http: HttpClient) { }
 
   sortDragons = (dragons) =>
-    dragons.items.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+    dragons.items.sort((a, b) => a.name > b.name)
 
   getDragons(page: number): Observable<Dragons> {
     return this._http.get<Dragons>(`${apiUrl}/dragons/?page=${page}`)
