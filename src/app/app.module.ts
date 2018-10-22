@@ -15,16 +15,17 @@ import RegisterPage from '@app/pages/register/register.component'
 import Header from '@app/components/header/header.component'
 import { Pagination } from '@app/components/pagination/pagination.component'
 import { DragonCard } from '@app/components/dragon-card/dragon-card.component'
+import { AuthService } from '@app/api/auth.service'
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPage,
-    ListPage,
-    Header,
-    RegisterPage,
-    Pagination,
     DragonCard,
+    Header,
+    ListPage,
+    LoginPage,
+    Pagination,
+    RegisterPage,
   ],
   imports: [
     AppRoutingModule,
@@ -34,6 +35,7 @@ import { DragonCard } from '@app/components/dragon-card/dragon-card.component'
     ReactiveFormsModule,
   ],
   providers: [
+    AuthService,
     DragonsService,
     PaginationService
   ],

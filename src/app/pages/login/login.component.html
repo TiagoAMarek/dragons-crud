@@ -4,14 +4,25 @@
   </header>
 
   <div class="columns">
-    <form class="column is-half is-offset-one-quarter">
+    <form [formGroup]="loginForm" class="column is-half is-offset-one-quarter">
       <div class="field">
-        <input class="input" type="text" placeholder="Usuário">
+        <input
+          formControlName="user"
+          class="input"
+          [ngClass]="f.user.errors ? 'is-danger' : 'is-success'"
+          type="text"
+          placeholder="Usuário">
       </div>
       <div class="field">
-        <input class="input" type="password" placeholder="Senha">
+        <input
+          formControlName="password"
+          class="input"
+          [ngClass]="f.password.errors ? 'is-danger' : 'is-success'"
+          type="password"
+          placeholder="Senha">
       </div>
-      <button class="button is-fullwidth is-info">Entrar</button>
+      <button (click)="login()" [disabled]="!loginForm.valid" [class.is-loading]="isLoading" class="button is-fullwidth is-info">Entrar</button>
+      <p *ngIf="error" class="app-login__error">Forneça um usuário válido</p>
     </form>
   </div>
 </div>
